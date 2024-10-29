@@ -62,7 +62,7 @@ def compute_bbox_image(bbox, frame_shape, image_shape, increase_area=0.1):
 
 def process_image(args):
     device = 'cpu' if args.cpu else 'cuda'
-    fa = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False, device=device)
+    fa = face_alignment.FaceAlignment(face_alignment.LandmarksType.TWO_D, flip_input=False, device=device)
     frame = skimage.io.imread(args.inp)
     frame_shape = frame.shape
 
@@ -82,7 +82,7 @@ def process_image(args):
 
 def process_video(args):
     device = 'cpu' if args.cpu else 'cuda'
-    fa = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False, device=device)
+    fa = face_alignment.FaceAlignment(face_alignment.LandmarksType.TWO_D, flip_input=False, device=device)
     reader = imageio.get_reader(args.inp)
     fps = reader.get_meta_data()['fps']
     frames = []
